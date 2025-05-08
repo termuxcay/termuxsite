@@ -1,52 +1,90 @@
-/* Resetando o padrão de margens e fontes */
-* {
+/* Cor do corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #00FF00;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Corpo da página */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: white;
-    line-height: 1.6;
-    padding: 20px;
-}
-
-/* Cabeçalho */
-header {
+/* Tela de carregamento */
+.loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     text-align: center;
-    margin-bottom: 30px;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    color: #ff6347; /* Tom de laranja */
+/* Efeito Matrix - números caindo */
+.matrix {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    animation: matrix 3s infinite linear;
 }
 
-header p {
+.matrix-text {
+    font-size: 2rem;
+    margin: 0.5rem;
+    opacity: 0;
+    animation: fall 3s infinite linear;
+}
+
+/* Animação de queda dos números */
+@keyframes fall {
+    0% {
+        opacity: 1;
+        transform: translateY(-100vh);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(100vh);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh);
+    }
+}
+
+/* Texto de boas-vindas */
+.welcome-text {
+    font-size: 1.5rem;
+    color: #00FF00;
+    z-index: 10;
+}
+
+.welcome-text h1 {
+    font-size: 3rem;
+}
+
+.welcome-text p {
     font-size: 1.2rem;
-    color: #aaa;
 }
 
-/* Seção principal */
-section {
+/* Estilo da página principal */
+.main-content {
+    display: none;
     text-align: center;
-}
-
-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-section p {
+    color: #333;
     font-size: 1.1rem;
-    margin-bottom: 20px;
 }
 
+/* Botão */
 .btn {
-    background-color: #ff6347;
+    background-color: #4CAF50;
     padding: 10px 20px;
     font-size: 1rem;
     color: white;
@@ -55,13 +93,5 @@ section p {
 }
 
 .btn:hover {
-    background-color: #e53d29;
-}
-
-/* Rodapé */
-footer {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 0.9rem;
-    color: #bbb;
+    background-color: #45a049;
 }

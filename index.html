@@ -3,23 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo ao TermuxSite</title>
+    <title>Termux Site</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Bem-vindo ao TermuxSite!</h1>
-        <p>Este é um site de exemplo para testar no GitHub Pages.</p>
-    </header>
-    
-    <section>
-        <h2>O que podemos fazer aqui?</h2>
-        <p>Este site pode ser usado para qualquer coisa. Sinta-se à vontade para testar! 😎</p>
-        <a href="#" class="btn">Clique aqui para mais!</a>
-    </section>
 
-    <footer>
-        <p>Feito com ♥ por <strong>Caysson</strong></p>
-    </footer>
+    <!-- Tela de Carregamento -->
+    <div class="loading-screen">
+        <div class="matrix">
+            <!-- Animação de 0 e 1 caindo -->
+            <div class="matrix-text">0</div>
+            <div class="matrix-text">1</div>
+            <div class="matrix-text">0</div>
+            <div class="matrix-text">1</div>
+            <div class="matrix-text">0</div>
+        </div>
+        <div class="welcome-text">
+            <h1>Bem-vindo ao Termux Site</h1>
+            <p>Pressione Enter para entrar</p>
+        </div>
+    </div>
+
+    <!-- Página Principal -->
+    <div class="main-content" style="display: none;">
+        <header>
+            <h1>Bem-vindo ao Meu Primeiro Site!</h1>
+            <p>Estou aprendendo programação do zero!</p>
+        </header>
+
+        <section>
+            <h2>Sobre o site</h2>
+            <p>Este site é um exemplo básico de como criar uma página com HTML e CSS.</p>
+            <a href="#" class="btn">Clique aqui para mais!</a>
+        </section>
+
+        <footer>
+            <p>Feito com ♥ por Caysson</p>
+        </footer>
+    </div>
+
+    <script>
+        // Quando pressionar Enter, a tela de carregamento desaparece e mostra o conteúdo
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                document.querySelector(".loading-screen").style.display = "none"; // Esconde tela de carregamento
+                document.querySelector(".main-content").style.display = "block";  // Mostra o conteúdo principal
+            }
+        });
+    </script>
 </body>
 </html>
