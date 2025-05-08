@@ -58,6 +58,13 @@ section p {
     background-color: #e53d29;
 }
 
+/* Estilo para o texto selecionado */
+::selection {
+    background-color: #00FF00; /* Fundo verde */
+    color: black; /* Cor do texto selecionado (preto) */
+}
+
+
 /* Rodapé */
 footer {
     text-align: center;
