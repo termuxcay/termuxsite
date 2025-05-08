@@ -50,18 +50,19 @@
             font-size: 20px;
             position: absolute;
             animation: fall linear infinite;
+            transform-origin: center;
         }
 
         @keyframes fall {
             0% {
-                transform: translateY(-100px);
+                transform: translateY(-100px) rotate(0deg);
                 opacity: 1;
             }
             70% {
                 opacity: 1;
             }
             100% {
-                transform: translateY(100vh);
+                transform: translateY(100vh) rotate(var(--random-rotate));
                 opacity: 0;
             }
         }
@@ -90,6 +91,10 @@
             animation: blink 2s infinite;
         }
 
+        .blinking-text:active {
+            color: rgba(0, 255, 0, 0.7); /* Verde claro quando selecionado */
+        }
+
         @keyframes blink {
             0%, 100% {
                 opacity: 1;
@@ -97,6 +102,12 @@
             50% {
                 opacity: 0;
             }
+        }
+
+        /* Estilo para o texto selecionado */
+        ::selection {
+            background-color: #00FF00; /* Fundo verde */
+            color: black; /* Cor do texto selecionado */
         }
     </style>
 </head>
@@ -139,6 +150,7 @@
                 text.classList.add('matrix-text');
                 text.textContent = characters.charAt(Math.floor(Math.random() * characters.length));
                 text.style.left = Math.random() * 100 + 'vw';
+                text.style.setProperty('--random-rotate', (Math.random() * 90 - 45) + 'deg'); // Define a rotação aleatória
                 text.style.animationDuration = Math.random() * 6 + 5 + 's'; // Aumenta ainda mais a duração da animação
                 matrix.appendChild(text);
 
