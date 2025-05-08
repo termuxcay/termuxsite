@@ -4,112 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Termux Site</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            background-color: black;
-        }
-
-        .loading-screen {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            flex-direction: column;
-        }
-
-        .matrix {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            overflow: hidden;
-        }
-
-        .welcome-text {
-            z-index: 1;
-            text-align: center;
-        }
-
-        .main-content {
-            display: none;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .matrix-text {
-            color: #0f0;
-            font-family: monospace;
-            font-size: 20px;
-            position: absolute;
-            animation: fall linear infinite;
-            transform-origin: center;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            70% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(var(--random-rotate));
-                opacity: 0;
-            }
-        }
-
-        .neon-text {
-            font-family: 'Courier New', monospace;
-            color: rgba(255, 255, 255, 0.6); /* Texto branco mais fraco */
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5), 0 0 10px rgba(0, 255, 0, 0.3); /* Efeito de luz neon mais suave */
-            font-size: 3em;
-            animation: flicker 1.5s infinite alternate;
-        }
-
-        @keyframes flicker {
-            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-                text-shadow: 0 0 5px rgba(0, 255, 0, 0.5), 0 0 10px rgba(0, 255, 0, 0.3);
-            }
-            20%, 24%, 55% {
-                text-shadow: none;
-            }
-        }
-
-        .blinking-text {
-            font-family: 'Courier New', monospace;
-            color: white;
-            font-size: 1.2em;
-            animation: blink 2s infinite;
-        }
-
-        .blinking-text:active {
-            color: rgba(0, 255, 0, 0.7); /* Verde claro quando selecionado */
-        }
-
-        @keyframes blink {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
-        }
-
-        /* Estilo para o texto selecionado */
-        ::selection {
-            background-color: #00FF00; /* Fundo verde */
-            color: black; /* Cor do texto selecionado */
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -122,17 +17,44 @@
         </div>
     </div>
 
-    <!-- Página Principal -->
+    <!-- Página Principal (oculta inicialmente) -->
     <div class="main-content">
         <header>
             <h1>Bem-vindo ao Meu Primeiro Site!</h1>
-            <p>Estou aprendendo programação do zero!</p>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#cheats">Cheats</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                </ul>
+            </nav>
         </header>
 
-        <section>
-            <h2>Sobre o site</h2>
-            <p>Este site é um exemplo básico de como criar uma página com HTML e CSS.</p>
-            <a href="#" class="btn">Clique aqui para mais!</a>
+        <section id="inicio">
+            <h2>Início</h2>
+            <p>Bem-vindo ao site, onde você encontrará informações sobre hacking e muito mais.</p>
+        </section>
+
+        <section id="cheats">
+            <h2>Cheats</h2>
+            <p>Aqui você encontrará cheats exclusivos para seus jogos favoritos.</p>
+        </section>
+
+        <section id="servicos">
+            <h2>Serviços</h2>
+            <p>Oferecemos serviços de hacking e automações para diversos jogos.</p>
+        </section>
+
+        <section id="equipe">
+            <h2>Equipe</h2>
+            <p>Conheça nossa equipe de especialistas em hacking e segurança digital.</p>
+        </section>
+
+        <section id="sobre">
+            <h2>Sobre</h2>
+            <p>Saiba mais sobre o nosso trabalho e como começamos no mundo do hacking.</p>
         </section>
 
         <footer>
@@ -140,37 +62,6 @@
         </footer>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const matrix = document.getElementById('matrix');
-            const characters = '01'; // Caracteres que serão usados
-
-            function createMatrixText() {
-                const text = document.createElement('div');
-                text.classList.add('matrix-text');
-                text.textContent = characters.charAt(Math.floor(Math.random() * characters.length));
-                text.style.left = Math.random() * 100 + 'vw';
-                text.style.setProperty('--random-rotate', (Math.random() * 90 - 45) + 'deg'); // Define a rotação aleatória
-                text.style.animationDuration = Math.random() * 6 + 5 + 's'; // Aumenta ainda mais a duração da animação
-                matrix.appendChild(text);
-
-                // Remove o elemento após a animação terminar
-                setTimeout(() => {
-                    text.remove();
-                }, parseFloat(text.style.animationDuration) * 1000);
-            }
-
-            // Cria um novo caractere a cada 300ms
-            setInterval(createMatrixText, 300);
-
-            // Quando pressionar Enter, a tela de carregamento desaparece e mostra o conteúdo
-            document.addEventListener("keydown", function(event) {
-                if (event.key === "Enter") {
-                    document.querySelector(".loading-screen").style.display = "none"; // Esconde tela de carregamento
-                    document.querySelector(".main-content").style.display = "block";  // Mostra o conteúdo principal
-                }
-            });
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
