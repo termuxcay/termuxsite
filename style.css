@@ -1,37 +1,67 @@
-.matrix {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Resetando o padrão de margens e fontes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.matrix-text {
-    color: #0f0;
-    font-family: monospace;
-    font-size: 20px;
-    position: absolute;
-    animation: fall linear infinite;
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: white;
+    line-height: 1.6;
+    padding: 20px;
 }
 
-@keyframes fall {
-    0% {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh);
-        opacity: 0;
-    }
+/* Cabeçalho */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ff6347; /* Tom de laranja */
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #aaa;
+}
+
+/* Seção principal */
+section {
+    text-align: center;
+}
+
+section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+section p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #ff6347;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #e53d29;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: #bbb;
 }
